@@ -42,7 +42,9 @@ int main(int argc, char *argv[]){
               error("ERROR on binding");
      listen(sockfd,5);
      clilen = sizeof(cli_addr);
-     newsockfd = accept(sockfd, 
+while(1){
+	//inserisco while per far si possa accettare piu richieste
+	newsockfd = accept(sockfd, 
                  (struct sockaddr *) &cli_addr, 
                  &clilen);
      if (newsockfd < 0) 
@@ -78,6 +80,6 @@ finale[2]=res;
 		}
 	printf("\n");
 	 n = write(newsockfd , finale , 6);	
-
+}//chiusura while
      return 0; 
 }
